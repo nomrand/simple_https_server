@@ -10,8 +10,7 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 import ssl
 import sys, os
 
-
 httpd = HTTPServer((sys.argv[1], 4443), SimpleHTTPRequestHandler)
-httpd.socket = ssl.wrap_socket(httpd.socket, certfile='./server.pem', server_side=True)
+httpd.socket = ssl.wrap_socket(httpd.socket, certfile='tmp/server.pem', server_side=True)
 print ("WEB SERVER https://"+sys.argv[1]+":4443 START!")
 httpd.serve_forever()
